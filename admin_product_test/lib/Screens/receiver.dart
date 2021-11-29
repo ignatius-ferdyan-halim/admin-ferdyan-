@@ -22,28 +22,10 @@ class Receiver extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          // return ListView(
-          //   children: snapshot.data.documents.map((document) {
-          //     return Center(
-          //       child: Container(
-          //         width: MediaQuery.of(context).size.width / 1.2,
-          //         height: MediaQuery.of(context).size.width / 6,
-          //         child: Text(document['index']),
-          //       ),
-          //     );
-          //   }).toList(),
-          // );
+
           return ListView(
             children: snapshot.data.documents.map((doc) {
               return Column(
-                // children: List.generate(
-                //   List.from(doc['Products']).length,
-                //   (index) {
-                //     return Row(
-                //       children: [Text(doc['Products'][index]['title'])],
-                //     );
-                //   },
-                // ),
                 children: [
                   for (var i in doc.data.values)
                     Text(
@@ -66,42 +48,7 @@ class Receiver extends StatelessWidget {
                       i['imageurl'].toString(),
                     ),
                 ],
-                // children: [
-                //   for (var i in doc.data.values)
-                //     Text(
-                //       i['id'].toString(),
-                //     ),
-                //   for (var i in doc.data.values)
-                //     Text(
-                //       i['title'].toString(),
-                //     ),
-                //   for (var i in doc.data.values)
-                //     Text(
-                //       i['description'].toString(),
-                //     ),
-                //   for (var i in doc.data.values)
-                //     Text(
-                //       i['price'].toString(),
-                //     ),
-                //   for (var i in doc.data.values)
-                //     Text(
-                //       i['imageurl'].toString(),
-                //     ),
-                // ],
-                // child: Text(doc.data['0']['title']),
               );
-              // ListView(
-//     children: List.generate(
-//       List.from(doc['orderDetails'].length,
-//       (i) {
-//        return Row(
-//         children: [
-//           Text(doc['orderDetails'][i]['quantity'].toString()),
-//           Text(doc['orderDetails'][i]['title'].toString())),
-//         ],
-//       );
-//     )
-// )
             }).toList(),
           );
         },

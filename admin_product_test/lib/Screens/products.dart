@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebutler/Shared/constants.dart';
+import 'package:ebutler/providers/productdb.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
@@ -37,15 +38,22 @@ class _ProductsState extends State<Products> {
     // for (var doc in testing.documents) {
     //   print(doc.data);
     // }
-    // final testing = Provider.of<List<prod.Products>>(context);
-
-    // testing.forEach((test) {
-    //   print(test.id);
-    //   print(test.title);
-    //   print(test.description);
-    //   print(test.price);
-    //   print(test.imageURL);
-    // });
+    final testing = Provider.of<List<prod.Products>>(context);
+    // print(testing.id);
+    // for (int i = 0; i < testing.length; i++) {
+    //   print(testing.toList()[i].id);
+    //   print(testing.toList()[i].title);
+    //   print(testing.toList()[i].description);
+    //   print(testing.toList()[i].price);
+    //   print(testing.toList()[i].imageURL);
+    // }
+    testing.forEach((test) {
+      print(test.id);
+      print(test.title);
+      print(test.description);
+      print(test.price);
+      print(test.imageURL);
+    });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
@@ -134,7 +142,6 @@ class _ProductsState extends State<Products> {
                 SizedBox(
                   height: 20,
                 ),
-
                 RaisedButton(
                   child: Text('Add'),
                   onPressed: () {
@@ -142,7 +149,7 @@ class _ProductsState extends State<Products> {
                       Provider.of<prod.ProductsItem>(context, listen: false)
                           .addItem(
                         id,
-                        double.parse(price),
+                        int.parse(price),
                         title,
                         description,
                         imageUrl,
@@ -159,21 +166,20 @@ class _ProductsState extends State<Products> {
                     color: Colors.purple,
                     onPressed: () {
                       for (int i = 0; i < product.productsCount; i++) {
-                        DatabaseService(
-                                id: product.products.values.toList()[i].id)
-                            .updateProductData(
-                                product.products.values.toList()[i].id,
-                                product.products.values.toList()[i].title,
-                                product.products.values.toList()[i].price,
-                                product.products.values.toList()[i].description,
-                                product.products.values.toList()[i].imageURL);
+                        DatabaseService(uid: user.uid).updateProductData(
+                            i,
+                            product.products.values.toList()[i].id,
+                            product.products.values.toList()[i].title,
+                            product.products.values.toList()[i].price,
+                            product.products.values.toList()[i].description,
+                            product.products.values.toList()[i].imageURL);
                       }
                     }),
-                // RaisedButton(
-                //     child: Text('Set up'),
-                //     onPressed: () {
-                //       DatabaseService(uid: user.uid).setDocument();
-                //     })
+                RaisedButton(
+                    child: Text('Set up'),
+                    onPressed: () {
+                      DatabaseService(uid: user.uid).setDocument();
+                    })
               ],
             ),
           ),

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class Products {
   final String id;
-  final double price;
+  final int price;
   final String description;
   final String imageURL;
   final String title;
@@ -23,7 +23,7 @@ class ProductsItem with ChangeNotifier {
 
   void addItem(
     String id,
-    double price,
+    int price,
     String title,
     String description,
     String imageURL,

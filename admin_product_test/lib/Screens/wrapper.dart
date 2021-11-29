@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebutler/Screens/receiver.dart';
 import 'package:ebutler/Services/database.dart';
 import 'package:ebutler/providers/productdb.dart';
 import 'package:flutter/material.dart';
@@ -18,17 +19,18 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else {
-      return StreamProvider<List<prod.Products>>.value(
-        child: Products(),
-        value: DatabaseService().productsStream,
-        initialData: [],
+      return
+          // StreamProvider<List<prod.Products>>.value(
+          //   child: Products(),
+          //   value: DatabaseService().productsStream,
+          //   initialData: [],
+          // );
+          //tadinya
+          StreamProvider<QuerySnapshot>.value(
+        child: Receiver(),
+        value: DatabaseService().productSnapshot,
+        initialData: null,
       );
-      //tadinya
-      //   StreamProvider<QuerySnapshot>.value(
-      // child: Products(),
-      // value: DatabaseService().productSnapshot,
-      // initialData: null,
-      // );
     }
   }
 }

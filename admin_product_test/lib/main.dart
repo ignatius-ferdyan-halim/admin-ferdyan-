@@ -5,7 +5,9 @@ import 'package:ebutler/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/providers/products.dart';
+import 'Screens/receiver.dart';
+import '/Screens/products.dart';
+import '/providers/products.dart' as prod;
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
           //   create: (ctx) => Products(),
           // ),
           ChangeNotifierProvider(
-            create: (ctx) => ProductsItem(),
+            create: (ctx) => prod.ProductsItem(),
           ),
         ],
         child: MaterialApp(
@@ -36,6 +38,10 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Lato',
           ),
           home: const Wrapper(),
+          routes: {
+            Receiver.routeName: (ctx) => const Receiver(),
+            // Products.routeName: (ctx) => const Products(),
+          },
         ),
       ),
     );

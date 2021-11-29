@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
+import '/Shared/appdrawer.dart';
 import '/Services/auth.dart';
 import '/Services/database.dart';
 import '/Model/user.dart';
 import '/providers/products.dart' as prod;
 
 class Products extends StatefulWidget {
+  static const routeName = '/';
+
   const Products({Key key}) : super(key: key);
 
   @override
@@ -34,11 +37,11 @@ class _ProductsState extends State<Products> {
 
     final AuthService _auth = AuthService();
 
-    // final testing = Provider.of<QuerySnapshot>(context);
-    // for (var doc in testing.documents) {
+    final justSnapshot = Provider.of<QuerySnapshot>(context);
+    // for (var doc in justSnapshot.documents) {
     //   print(doc.data);
     // }
-    final testing = Provider.of<List<prod.Products>>(context);
+    // final testing = Provider.of<List<prod.Products>>(context);
     // print(testing.id);
     // for (int i = 0; i < testing.length; i++) {
     //   print(testing.toList()[i].id);
@@ -47,14 +50,15 @@ class _ProductsState extends State<Products> {
     //   print(testing.toList()[i].price);
     //   print(testing.toList()[i].imageURL);
     // }
-    testing.forEach((test) {
-      print(test.id);
-      print(test.title);
-      print(test.description);
-      print(test.price);
-      print(test.imageURL);
-    });
+    // testing.forEach((test) {
+    //   print(test.id);
+    //   print(test.title);
+    //   print(test.description);
+    //   print(test.price);
+    //   print(test.imageURL);
+    // });
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.purple,
         title: const Text('Products'),

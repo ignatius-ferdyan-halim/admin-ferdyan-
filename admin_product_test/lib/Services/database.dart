@@ -93,7 +93,7 @@ class DatabaseService {
     return cartCollection.snapshots().map(_productsSnapshot);
   }
 
-  Stream<QuerySnapshot> get productSnapshot {
-    return cartCollection.snapshots();
-  }
+  // Stream<QuerySnapshot> get productSnapshot {
+  //   return cartCollection.snapshots();
+  // }
 }

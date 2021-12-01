@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\College\\Flutter\\admin_product_test\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "D:\\Github\\admin-ferdyan-\\admin_product_test\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\College\\Flutter\\admin_product_test\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\Github\\admin-ferdyan-\\admin_product_test\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

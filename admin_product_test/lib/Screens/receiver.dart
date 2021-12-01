@@ -26,36 +26,8 @@ class Receiver extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-
-          // void getData() {
-          //   for (int i = 0; i < snapshot.data.documents.length; i++) {
-          //     snapshot.data.documents.map((doc) {
-          //       Text(doc.data['$i']['id']);
-          //     }).toList();
-          //   }
-          // }
-
-          // return ListView(
-          //   children: snapshot.data.documents.map((document) {
-          //     return Center(
-          //       child: Container(
-          //         width: MediaQuery.of(context).size.width / 1.2,
-          //         height: MediaQuery.of(context).size.width / 6,
-          //         child: Text(document['Time'].toString()),
-          //       ),
-          //     );
-          //   }).toList(),
-          // );
           return ListView(
-            //dilistview ini itu dia uda ngeloop sesuai dari banyaknya dokumen
-            //misal ada 3 dokumen gitu, ntar loop pertama dia bakal masuk ke dokumen pertama
-            //abis itu di loop pertama bakal jalanin for var i yg bakal nyari data pada dokumen itu
-            //di index yang sesuai
             children: snapshot.data.documents.map((doc) {
-              // for (var i in doc.data.values) {
-              //   compare = i['Total Price'];
-              // }
-
               newTotal = '';
               newDate = null;
 
@@ -71,12 +43,10 @@ class Receiver extends StatelessWidget {
 
               return Column(
                 children: [
-                  //i di sini bwt nentuin data dokumen ke berapa
                   for (var i in doc.data.values)
                     Text(
                       i['Item Id'].toString(),
                     ),
-
                   for (var i in doc.data.values)
                     Text(
                       i['Title'].toString(),
@@ -96,37 +66,7 @@ class Receiver extends StatelessWidget {
                   newTotal == null ? Text('') : Text(newTotal),
                   newDate == null ? Text('') : Text(newDate.toString()),
                 ],
-
-                // children: [
-                //   for (var i in doc.data.values)
-                //     Text(
-                //       i['Title'].toString(),
-                //     ),
-                // ],
-
-                // ],
-                // child: Text(doc.data['0']['title']),
-                // children: List.generate(
-                //   List.from(doc['Products']).length,
-                //   (index) {
-                //     return Row(
-                //       children: [Text(doc['Products'][index]['title'])],
-                //     );
-                //   },
-                // ),
               );
-              // ListView(
-//     children: List.generate(
-//       List.from(doc['orderDetails'].length,
-//       (i) {
-//        return Row(
-//         children: [
-//           Text(doc['orderDetails'][i]['quantity'].toString()),
-//           Text(doc['orderDetails'][i]['title'].toString())),
-//         ],
-//       );
-//     )
-// )
             }).toList(),
           );
         },

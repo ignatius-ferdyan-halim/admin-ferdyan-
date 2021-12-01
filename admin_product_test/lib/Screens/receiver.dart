@@ -28,7 +28,7 @@ class Receiver extends StatelessWidget {
           }
           return ListView(
             children: snapshot.data.documents.map((doc) {
-              newTotal = '';
+              newTotal = null;
               newDate = null;
 
               for (var i in doc.data.values) {

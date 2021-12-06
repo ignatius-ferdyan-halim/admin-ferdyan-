@@ -1,3 +1,5 @@
+import 'package:ebutler/Screens/infopage.dart';
+import 'package:ebutler/Screens/informationpage.dart';
 import 'package:ebutler/Screens/products.dart';
 import 'package:ebutler/Screens/receiver.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,20 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Receiver'),
             onTap: () {
               Navigator.of(context).pushNamed(Receiver.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.book),
+            title: const Text('Information'),
+            onTap: () {
+              Navigator.of(context).pushNamed(InformationPage.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.book),
+            title: const Text('Informationpage'),
+            onTap: () {
+              Navigator.of(context).pushNamed(InfoPage.routeName);
             },
           ),
         ],

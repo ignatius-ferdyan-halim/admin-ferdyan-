@@ -13,9 +13,27 @@ class DatabaseService {
   List<Products> _products = [];
   final CollectionReference cartCollection =
       Firestore.instance.collection('product');
-
+  final CollectionReference infoCollection =
+      Firestore.instance.collection('Information');
   Future setDocument() async {
     return await cartCollection.document(id).setData({});
+  }
+
+  Future setDocument1() async {
+    return await infoCollection.document(id).setData({});
+  }
+
+  Future updateInformationData(
+      int index, String id, String title, String description) async {
+    Map<String, Object> informationsData = {
+      'id': id,
+      'title': title,
+      'description': description,
+    };
+
+    return await infoCollection.document(id).updateData({
+      '$index': informationsData,
+    });
   }
 
   Future updateProductData(String id, String title, int price,

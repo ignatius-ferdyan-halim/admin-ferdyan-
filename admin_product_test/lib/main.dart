@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebutler/Model/user.dart';
+import 'package:ebutler/Screens/infopage.dart';
+import 'package:ebutler/Screens/informationpage.dart';
 import 'package:ebutler/Screens/wrapper.dart';
 import 'package:ebutler/Services/auth.dart';
+import 'package:ebutler/providers/informations.dart' as info;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,6 +33,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (ctx) => prod.ProductsItem(),
           ),
+          ChangeNotifierProvider(
+            create: (ctx) => info.Informationlist(),
+          ),
         ],
         child: MaterialApp(
           theme: ThemeData(
@@ -40,6 +46,8 @@ class MyApp extends StatelessWidget {
           home: const Wrapper(),
           routes: {
             Receiver.routeName: (ctx) => const Receiver(),
+            InformationPage.routeName: (ctx) => const InformationPage(),
+            InfoPage.routeName: (ctx) => const InfoPage(),
             // Products.routeName: (ctx) => const Products(),
           },
         ),

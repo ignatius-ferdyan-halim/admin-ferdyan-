@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebutler/Model/user.dart';
 import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/appdrawer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class InfoPage extends StatefulWidget {
   const InfoPage({Key key}) : super(key: key);
+
   static const routeName = '/Infopage';
   @override
   _InfoPageState createState() => _InfoPageState();
@@ -13,6 +16,7 @@ class InfoPage extends StatefulWidget {
 class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     final AuthService _auth = AuthService();
     return Scaffold(
         drawer: const AppDrawer(),
@@ -34,7 +38,10 @@ class _InfoPageState extends State<InfoPage> {
         ),
         floatingActionButton: null,
         body: StreamBuilder(
-          stream: Firestore.instance.collection('Information').snapshots(),
+          stream: Firestore.instance
+              .collection('Information')
+              .orderBy(FieldPath.documentId)
+              .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
